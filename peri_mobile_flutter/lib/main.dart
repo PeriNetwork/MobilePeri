@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
@@ -21,8 +21,11 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: PreferredSize(child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-        body: Center(
-          child: PostWidget(),
+        body: Column(
+          children: [
+            PostWidget(),
+            PostWidget()
+          ],
         ),
         backgroundColor: Color.fromARGB(255, 10, 10, 10),
       ),

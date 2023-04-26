@@ -46,11 +46,17 @@ class PostWidget extends StatelessWidget {
                   LikeButton(
                     size: 40,
                     padding: EdgeInsets.all(5),
-                    
                   ),
-
+                  SizedBox(
+                    height: 5,
+                  ),
+                  LikeButton(
+                    size: 40,
+                    padding: EdgeInsets.all(5),
+                  ),
                 ],
-              )
+              ),
+              Image(image: AssetImage('assets/images/post_media_2.png'), width: 50,)  
             ],
           )
         ],

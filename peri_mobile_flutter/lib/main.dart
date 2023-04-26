@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
-import 'PeriNavBar.dart';
+import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
+import 'peri_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: PreferredSize(child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
         body: Center(
-          
+          child: PostWidget(),
         ),
         backgroundColor: Color.fromARGB(255, 10, 10, 10),
       ),

@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:peri_mobile_flutter/UserProfile/header_profile.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
+import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
@@ -12,9 +14,22 @@ class UserProfile extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-      body: Container(
-        color: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderProfile(
+              userName: "Ana Júlia Sentinella",
+              followersNumber: 3,
+              followingNumber: 5,
+            ),
+            PostWidget(),
+            PostWidget(),
+            PostWidget(),
+            PostWidget(),
+          ],
+        ),
       ),
+      backgroundColor: Colors.black,
     );
   }
 }

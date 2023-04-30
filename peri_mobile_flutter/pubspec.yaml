@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   like_button: ^2.0.5
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:
@@ -76,12 +77,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter-Regular.ttf
-        - asset: assets/fonts/Inter-Bold.ttf
-          weight: 700
+  #fonts:
+  #  - family: Inter
+  #    fonts:
+  #      - asset: assets/fonts/Inter-Regular.ttf
+  #      - asset: assets/fonts/Inter-Bold.ttf
+  #        weight: 700
           
   #         style: italic
   #   - family: Trajan Pro

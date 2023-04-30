@@ -15,20 +15,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: Scaffold(
-        appBar: PreferredSize(child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-        body: Column(
-          children: [
-            PostWidget(),
-            PostWidget()
-          ],
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
         ),
-        backgroundColor: Color.fromARGB(255, 10, 10, 10),
-      ),
-    );
+        home: Align(
+          alignment: Alignment(1, 1),
+          child: Scaffold(
+            appBar: PreferredSize(
+                child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
+            body: SingleChildScrollView(
+              child: Align(
+                alignment: Alignment(0, -1),
+                child: Column(
+                  children: [
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                    PostWidget(),
+                  ],
+                ),
+              ),
+            ),
+            backgroundColor: Color.fromARGB(255, 10, 10, 10),
+          ),
+        ));
   }
 }

@@ -29,7 +29,11 @@ class NotificationWidget extends StatelessWidget {
               size: 35,
             ),
           ),
+          SizedBox(
+            width: 10,
+          ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
@@ -37,9 +41,9 @@ class NotificationWidget extends StatelessWidget {
                 child: Text(
                   userName,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
                 ),
               ),
               SizedBox(

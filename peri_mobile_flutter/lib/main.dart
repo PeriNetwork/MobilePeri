@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
+import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 import 'peri_nav_bar.dart';
 
@@ -15,6 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/': (context) => MyApp(),
+        '/notifications': (context) => NotificationsPage(),
+        '/myprofile': (context) => UserProfile(),
+      },
+      debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.red,
@@ -31,16 +39,12 @@ class MyApp extends StatelessWidget {
                   children: [
                     PostWidget(),
                     PostWidget(),
-                    PostWidget(),
-                    PostWidget(),
-                    PostWidget(),
-                    PostWidget(),
-                    PostWidget(),
-                    PostWidget(),
+                    PostWidget()
                   ],
                 ),
               ),
             ),
+            
             backgroundColor: Color.fromARGB(255, 10, 10, 10),
           ),
         ));

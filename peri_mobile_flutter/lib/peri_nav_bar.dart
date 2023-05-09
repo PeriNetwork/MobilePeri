@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
+import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 
 class PeriNavBar extends StatelessWidget {
   const PeriNavBar({super.key});
@@ -22,11 +23,14 @@ class PeriNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(image: AssetImage('assets/images/bell_peri_nav.png')),
-            SizedBox(
-              width: 15,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const NotificationsPage();
+                }));
+              },
+              child: Image(image: AssetImage('assets/images/bell_peri_nav.png')),
             ),
-            Image(image: AssetImage('assets/images/create_peri_nav.png')),
             SizedBox(
               width: 15,
             ),

@@ -7,13 +7,17 @@ class CreatePost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {},
-      child: Icon(
-        Icons.add,
-        color: Colors.white,
-      ),
-      backgroundColor: Colors.red,
-    );
+    return Positioned(
+        top: 0.85 * (MediaQuery.of(context).size.height),
+        left: 0.75 * (MediaQuery.of(context).size.width),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/writePost');
+          },
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        ));
   }
 }

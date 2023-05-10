@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
+import 'package:peri_mobile_flutter/create_post.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
-import 'package:peri_mobile_flutter/persistent_create_post.dart';
 import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 import 'package:peri_mobile_flutter/search_bar.dart';
+import 'package:peri_mobile_flutter/write_post_page/write_post_page.dart';
 import 'peri_nav_bar.dart';
 
 void main() {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/notifications': (context) => NotificationsPage(),
           '/myprofile': (context) => UserProfile(),
+          '/writePost':(context) => WritePostPage()
         },
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
@@ -45,19 +47,13 @@ class MyApp extends StatelessWidget {
                       PostWidget(),
                       PostWidget(),
                       PostWidget(),
+                      PostWidget(),
+                      PostWidget(),
+                      PostWidget(),
                     ],
                   )),
                 ),
-                Positioned(
-                    top: 0.85 * (MediaQuery.of(context).size.height),
-                    left: 0.75 * (MediaQuery.of(context).size.width),
-                    child: FloatingActionButton(
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ))
+                CreatePost(),
               ],
             ),
             backgroundColor: Color.fromARGB(255, 10, 10, 10),

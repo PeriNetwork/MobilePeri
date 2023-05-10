@@ -10,25 +10,40 @@ class WritePostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: PreferredSize(
-          child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-      body: Container(
-        child: Row(
+        backgroundColor: Colors.black,
+        appBar: PreferredSize(
+            child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
+        body: Column(
+          
           children: [
-            Column(
-              children: [
-                Image(image: AssetImage('assets/images/user_peri_nav.png'))
-              ],
-            ),
-            Column(children: [
-              TextField(
-                //decoration: ,
-              )
-            ],)
+            Container(
+              child: Row(
+                children: [
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/user_peri_nav.png',
+                        height: 50,
+                      )
+                    ],
+                  ),
+                  Container(
+                    width: 0.8 * (MediaQuery.of(context).size.width),
+                    decoration: BoxDecoration(color: Colors.grey[900], borderRadius: BorderRadius.circular(10)),
+                    child: Expanded(
+                        child: TextField(
+                          minLines: 1,
+                          maxLines: 10,
+                      decoration: InputDecoration(
+                        
+                        border: OutlineInputBorder()
+                      ), style: TextStyle(color: Colors.white),
+                    )),
+                  )
+                ],
+              ),
+            )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

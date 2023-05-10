@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
+import 'package:peri_mobile_flutter/persistent_create_post.dart';
 import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 import 'package:peri_mobile_flutter/search_bar.dart';
 import 'peri_nav_bar.dart';
@@ -33,18 +34,31 @@ class MyApp extends StatelessWidget {
           child: Scaffold(
             appBar: PreferredSize(
                 child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-            body: SingleChildScrollView(
-              child: Align(
-                alignment: Alignment(0, -1),
-                child: Column(
-                  children: [
-                    SearchBar(),
-                    PostWidget(),
-                    PostWidget(),
-                    PostWidget()
-                  ],
+            body: Stack(
+              children: [
+                Align(
+                  alignment: Alignment(0, -1),
+                  child: SingleChildScrollView(
+                      child: Column(
+                    children: [
+                      SearchBarPeri(),
+                      PostWidget(),
+                      PostWidget(),
+                      PostWidget(),
+                    ],
+                  )),
                 ),
-              ),
+                Positioned(
+                    top: 0.85 * (MediaQuery.of(context).size.height),
+                    left: 0.75 * (MediaQuery.of(context).size.width),
+                    child: FloatingActionButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ))
+              ],
             ),
             backgroundColor: Color.fromARGB(255, 10, 10, 10),
           ),

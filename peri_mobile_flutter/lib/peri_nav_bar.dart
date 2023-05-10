@@ -29,12 +29,12 @@ class PeriNavBar extends StatelessWidget {
                   return const NotificationsPage();
                 }));
               },
-              child: Image(image: AssetImage('assets/images/bell_peri_nav.png')),
+              child:
+                  Image(image: AssetImage('assets/images/bell_peri_nav.png')),
             ),
             SizedBox(
               width: 15,
             ),
-            Image(image: AssetImage('assets/images/search_peri_nav.png')),
           ],
         ),
       ),

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../peri_nav_bar.dart';
+import 'import_image.dart';
 
 class WritePostPage extends StatelessWidget {
   const WritePostPage({super.key});
@@ -25,6 +26,7 @@ class WritePostPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
+                        Container(child: ,),
                         Image.asset(
                           'assets/images/user_peri_nav.png',
                           height: 50,
@@ -67,13 +69,7 @@ class WritePostPage extends StatelessWidget {
                 left: 0.75 * (MediaQuery.of(context).size.width),
                 child: Column(
                   children: [
-                    FloatingActionButton(
-                        backgroundColor: Colors.red[400],
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.add_a_photo,
-                          color: Colors.white,
-                        )),
+                    ImportImageBtn(),
                     SizedBox(
                       height: 30,
                     ),

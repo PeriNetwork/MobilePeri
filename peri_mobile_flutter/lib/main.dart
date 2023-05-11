@@ -8,9 +8,16 @@ import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 import 'package:peri_mobile_flutter/search_bar.dart';
 import 'package:peri_mobile_flutter/write_post_page/write_post_page.dart';
 import 'peri_nav_bar.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  // Step 3
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((value) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +31,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/notifications': (context) => NotificationsPage(),
           '/myprofile': (context) => UserProfile(),
-          '/writePost':(context) => WritePostPage()
+          '/writePost': (context) => WritePostPage()
         },
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

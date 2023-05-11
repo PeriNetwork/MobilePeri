@@ -65,8 +65,10 @@ class PostWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(5),
                 child: Image(
+                  fit: BoxFit.contain,
                   image: AssetImage('assets/images/post_media_2.png'),
                   width: 0.5 * (MediaQuery.of(context).size.width),
+                  height: 0.15 * (MediaQuery.of(context).size.height),
                 ),
               ),
             ],

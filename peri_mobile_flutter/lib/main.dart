@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           '/writePost':(context) => WritePostPage()
         },
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Peri',
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),

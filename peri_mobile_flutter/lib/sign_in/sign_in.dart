@@ -42,13 +42,15 @@ class _SignInPeriState extends State<SignInPeri> {
                 height: 40,
               ),
               SizedBox(
-                width: 0.4 * (MediaQuery.of(context).size.width),
+                width: 0.5 * (MediaQuery.of(context).size.width),
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      
+                        
                       ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/createAccount');
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -66,13 +68,15 @@ class _SignInPeriState extends State<SignInPeri> {
               ),
               SizedBox(height: 30,),
               SizedBox(
-                width: 0.4 * (MediaQuery.of(context).size.width),
+                width: 0.5 * (MediaQuery.of(context).size.width),
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       //primary:
                       ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
-import 'package:peri_mobile_flutter/create_post.dart';
 import 'package:peri_mobile_flutter/home_page.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 import 'package:peri_mobile_flutter/sign_in/create_account/create_account.dart';

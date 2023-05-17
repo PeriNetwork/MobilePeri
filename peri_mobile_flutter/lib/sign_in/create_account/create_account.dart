@@ -30,7 +30,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(top: 40, left: 10),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, '/');
@@ -46,7 +46,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               ),
               Padding(
                   padding: EdgeInsets.only(
-                    top: 0.2 * (MediaQuery.of(context).size.width),
+                    top: 0.15 * (MediaQuery.of(context).size.width),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(top: 40, left: 10),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/');

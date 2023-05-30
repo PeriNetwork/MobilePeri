@@ -21,17 +21,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowMaterialGrid: false,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => SignInPeri(),
         '/homepage': (context) => HomePagePeri(),
         '/notifications': (context) => NotificationsPage(),
         '/myprofile': (context) => UserProfile(),
-        '/writePost':(context) => WritePostPage(),
+        '/writePost': (context) => WritePostPage(),
         '/createAccount': (context) => CreateAccountPage(),
-        '/login':(context) => LoginPage(),
+        '/login': (context) => LoginPage(),
       },
-      debugShowCheckedModeBanner: false,
       title: 'Peri',
       theme: ThemeData(
         primarySwatch: Colors.red,

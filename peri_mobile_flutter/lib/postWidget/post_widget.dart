@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:like_button/like_button.dart';
+import 'package:peri_mobile_flutter/write_post_page/write_post_page.dart';
 
 class PostWidget extends StatelessWidget {
   const PostWidget({super.key});
@@ -54,7 +55,12 @@ class PostWidget extends StatelessWidget {
                     height: 5,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const WritePostPage();
+                      }));
+                    },
                     child: Icon(
                       Icons.comment,
                       color: Colors.grey,

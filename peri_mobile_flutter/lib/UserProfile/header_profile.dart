@@ -17,12 +17,14 @@ class HeaderProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.topCenter,
-          child: Icon(
-            Icons.person,
-            color: Colors.white,
-            size: 100,
+        Padding(
+          padding: EdgeInsets.only(top: 30, bottom: 30),
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Image(
+              image: AssetImage('assets/images/user_avatar.png'),
+              width: 200,
+            ),
           ),
         ),
         Text(

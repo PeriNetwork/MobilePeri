@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
+import 'package:peri_mobile_flutter/configPage/config.dart';
 import 'package:peri_mobile_flutter/home_page.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 import 'package:peri_mobile_flutter/sign_in/create_account/create_account.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/writePost': (context) => WritePostPage(),
         '/createAccount': (context) => CreateAccountPage(),
         '/login': (context) => LoginPage(),
+        'config': (context) => myconfigpage(),
       },
       title: 'Peri',
       theme: ThemeData(

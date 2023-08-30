@@ -23,7 +23,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
           child: Scaffold(
             appBar: PreferredSize(
                 child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-            body: Stack(
+            body: Stack( 
               children: [
                 Align(
                   alignment: Alignment(0, -1),

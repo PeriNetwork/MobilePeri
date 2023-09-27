@@ -39,6 +39,9 @@ dependencies:
   like_button: ^2.0.5
   font_awesome_flutter: ^10.4.0
   intl: ^0.18.1
+  http: ^1.1.0
+  dio: ^5.3.3
+  flutter_session_manager: ^1.0.3
 
 dev_dependencies:
   flutter_test:

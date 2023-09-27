@@ -46,7 +46,7 @@ class _SignInPeriState extends State<SignInPeri> {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                        
+                      backgroundColor: Colors.red[900] 
                       ),
                   onPressed: () {
                     Navigator.pushNamed(context, '/createAccount');
@@ -72,7 +72,7 @@ class _SignInPeriState extends State<SignInPeri> {
                 height: 50,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      //primary:
+                      backgroundColor: Colors.red[900]
                       ),
                   onPressed: () {
                     Navigator.pushNamed(context, '/login');

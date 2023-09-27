@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
+import 'package:http/http.dart' as http;
+import 'package:peri_mobile_flutter/api/api_constants.dart';
+import 'package:peri_mobile_flutter/api/api_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +15,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _loginFormState = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.only(top: 30, bottom: 10),
                   child: SizedBox(
                       child: TextFormField(
+                    controller: _emailController,
                     maxLength: 20,
                     style: TextStyle(color: Colors.white),
                     validator: (valueNome) {
@@ -79,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     decoration: InputDecoration(
                         counterText: "",
-                        labelText: "Nome:",
+                        labelText: "Email:",
                         labelStyle: TextStyle(color: Colors.white),
                         focusColor: Colors.white,
                         enabledBorder: OutlineInputBorder(
@@ -100,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.only(top: 10, bottom: 10),
                   child: SizedBox(
                       child: TextFormField(
+                    controller: _passwordController,
                     validator: (valueSenha) {
                       if (valueSenha == null || valueSenha.isEmpty) {
                         return "Campo obrigatório";
@@ -131,16 +139,35 @@ class _LoginPageState extends State<LoginPage> {
                 width: 0.5 * (MediaQuery.of(context).size.width),
                 height: 50,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red[900],
+                  ),
                   onPressed: () {
-                    // TODO : BACKEND CADASTRO USUÁRIO
                     if (_loginFormState.currentState!.validate()) {
-                      Navigator.pushNamed(context, '/homepage');
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text('Login feito com sucesso !')),
-                      );
-                      print("Conta acessada !");
+                      ApiService.login(
+                              _emailController.text, _passwordController.text)
+                          .then((value) {
+                        if (value == 200) {
+                          var sessionManager = SessionManager();
+                          sessionManager.set('isLogged', true);
+                          
+
+                          Navigator.pushNamed(context, '/homepage');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Login feito com sucesso !')),
+                          );
+                          print("Conta acessada !");
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Email ou senha incorretos !')),
+                          );
+                          print("Conta não acessada !");
+                          print("Email: " + _emailController.text);
+                          print("Senha: " + _passwordController.text);
+                        }
+                      });
                     }
                   },
                   child: Row(

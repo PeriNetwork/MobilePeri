@@ -1,11 +1,16 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 
-import '../peri_nav_bar.dart';
-
-class WritePostPage extends StatelessWidget {
+class WritePostPage extends StatefulWidget {
   const WritePostPage({super.key});
+
+  @override
+  State<WritePostPage> createState() => _WritePostPageState();
+}
+
+class _WritePostPageState extends State<WritePostPage> {
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +44,26 @@ class WritePostPage extends StatelessWidget {
                         Container(
                           width: 0.8 * (MediaQuery.of(context).size.width),
                           decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Expanded(
+                              child: TextField(
+                            controller: _titleController,
+                            maxLines: 1,
+                            decoration: InputDecoration(hintText: "Título"),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          )),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: 0.8 * (MediaQuery.of(context).size.width),
+                          decoration: BoxDecoration(
                               color: Colors.grey[900],
                               borderRadius: BorderRadius.circular(10)),
                           child: Expanded(
                               child: TextField(
+                            controller: _descriptionController,
                             autofocus: true,
                             minLines: 1,
                             maxLines: 10,
@@ -82,7 +103,23 @@ class WritePostPage extends StatelessWidget {
                       height: 75,
                       child: FloatingActionButton(
                           backgroundColor: Colors.red,
-                          onPressed: () {},
+                          onPressed: () {
+                            if (_titleController.text.isEmpty ||
+                                _descriptionController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content:
+                                        Text('Preencha os campos obrigatórios')),
+                              );
+                            } else {
+                              String title = _titleController.text;
+                              String description =
+                                  _descriptionController.text;
+                              
+                              
+
+                            }
+                          },
                           child: Icon(
                             Icons.create,
                             color: Colors.white,

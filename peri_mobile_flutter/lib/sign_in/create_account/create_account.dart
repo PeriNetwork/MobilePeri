@@ -204,7 +204,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             width: 0.5 * (MediaQuery.of(context).size.width),
                             height: 50,
                             child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red[900],
+                              ),
                               onPressed: () {
                                 // TODO : BACKEND CADASTRO USUÁRIO
                                 if (_formKey.currentState!.validate()) {

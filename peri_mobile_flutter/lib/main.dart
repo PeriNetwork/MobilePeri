@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
-import 'package:peri_mobile_flutter/configPage/configUser.dart';
+import 'package:peri_mobile_flutter/configPage/config_page.dart';
 import 'package:peri_mobile_flutter/home_page.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 import 'package:peri_mobile_flutter/sign_in/create_account/create_account.dart';
@@ -17,7 +17,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/writePost': (context) => WritePostPage(),
         '/createAccount': (context) => CreateAccountPage(),
         '/login': (context) => LoginPage(),
-        'config': (context) => configUserPage(),
+        '/config': (context) => configUserPage(),
       },
       title: 'Peri',
       theme: ThemeData(

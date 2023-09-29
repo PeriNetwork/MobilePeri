@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:peri_mobile_flutter/api/api_constants.dart';
 
+import 'model/peri_user.dart';
+
 final dio = Dio(); 
 
 class ApiService {
@@ -11,6 +13,24 @@ class ApiService {
         data: {
           'email': email,
           'password': password,
+        },
+      );
+      return response.statusCode;
+    } on DioException catch (e) {
+      print(e.message);
+      return 400;
+    }
+  }
+
+  static signUp(PeriUser user) async {
+    try {
+      var response = await dio.post(
+        '${ApiConstants.baseURL}user/',
+        data: {
+          'name': user.name,
+          'email': user.email,
+          'password': user.password,
+          'birth_date': user.birthDate,
         },
       );
       return response.statusCode;

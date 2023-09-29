@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:peri_mobile_flutter/api/api_service.dart';
+import 'package:peri_mobile_flutter/api/model/peri_user.dart';
 
 class CreateAccountPage extends StatefulWidget {
   const CreateAccountPage({super.key});
@@ -18,6 +20,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   }
 
   final _formKey = GlobalKey<FormState>();
+
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final nameController = TextEditingController();
+  final birthDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +88,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           padding: EdgeInsets.only(top: 15, bottom: 10),
                           child: SizedBox(
                               child: TextFormField(
+                            controller: nameController,
                             validator: (valueNome) {
                               if (valueNome == null || valueNome.isEmpty) {
                                 return "Campo obrigatório";
@@ -115,6 +123,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             },
                             maxLength: 60,
                             style: TextStyle(color: Colors.white),
+                            controller: emailController,
                             decoration: InputDecoration(
                                 counterText: "",
                                 labelText: "Email:",
@@ -174,6 +183,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           padding: EdgeInsets.only(top: 20, bottom: 30),
                           child: SizedBox(
                               child: TextFormField(
+                            controller: passwordController,
                             obscureText: true,
                             maxLength: 60,
                             validator: (valuePassword) {
@@ -208,14 +218,43 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                 backgroundColor: Colors.red[900],
                               ),
                               onPressed: () {
-                                // TODO : BACKEND CADASTRO USUÁRIO
                                 if (_formKey.currentState!.validate()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('Conta Criada')),
-                                  );
-                                  Navigator.pushNamed(context, '/homepage');
-                                  print("Conta criada !");
+                                  try {
+                                    PeriUser userPeri = PeriUser(
+                                      nFollowers: 0,
+                                      active: true,
+                                      id: 0,
+                                      name: nameController.text,
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                      birthDate: dateinput.text,
+                                      createdAt: DateTime.now());
+                                    
+                                    ApiService.signUp(userPeri).then((value) {
+                                      if (value == 200) {
+                                        Navigator.pushNamed(context, '/homepage');
+                                        // scaffold messenger
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              'Cadastro realizado com sucesso!'),
+                                          backgroundColor: Colors.green,
+                                        ));
+                                      } else {
+                                        print("não foi possivel cadastrar...");
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                              'Não foi possivel realizar o cadastro!'),
+                                          backgroundColor: Colors.red,
+                                        ));
+                                      }
+                                    });
+
+                                  } catch (e) {
+                                    print("não foi possivel cadastrar...");
+                                  }
+                                  
                                 }
                               },
                               child: Row(

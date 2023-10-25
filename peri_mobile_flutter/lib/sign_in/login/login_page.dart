@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:peri_mobile_flutter/api/api_constants.dart';
 import 'package:peri_mobile_flutter/api/api_service.dart';
+import 'package:peri_mobile_flutter/api/model/peri_user.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -148,15 +148,19 @@ class _LoginPageState extends State<LoginPage> {
                               _emailController.text, _passwordController.text)
                           .then((value) {
                         if (value == 200) {
-                          var sessionManager = SessionManager();
-                          sessionManager.set('isLogged', true);
+                          try {
+                            PeriUser logged = ApiService.getUserByEmail(_emailController.text);
+                            print(logged);
+                          } catch (e) {
+                            print(e);
+                          }
                           
-
                           Navigator.pushNamed(context, '/homepage');
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Login feito com sucesso !')),
                           );
+                          
                           print("Conta acessada !");
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

@@ -1,12 +1,12 @@
 class PeriUser {
     int nFollowers;
-    bool active;
+    int active;
     int id;
     String name;
     String email;
     String password;
     String birthDate;
-    DateTime createdAt;
+    String createdAt;
 
     PeriUser({
         required this.nFollowers,
@@ -18,5 +18,17 @@ class PeriUser {
         required this.birthDate,
         required this.createdAt,
     });
+
+    // fromjson method
+    factory PeriUser.fromJson(Map<String, dynamic> json) => PeriUser(
+        nFollowers: json["n_followers"],
+        active: json["active"],
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        password: json["password"],
+        birthDate: json["birth_date"],
+        createdAt: json["created_at"],
+    );
 
 }

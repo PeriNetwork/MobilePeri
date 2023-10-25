@@ -222,13 +222,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                                   try {
                                     PeriUser userPeri = PeriUser(
                                       nFollowers: 0,
-                                      active: true,
+                                      active: 1,
                                       id: 0,
                                       name: nameController.text,
                                       email: emailController.text,
                                       password: passwordController.text,
                                       birthDate: dateinput.text,
-                                      createdAt: DateTime.now());
+                                      createdAt: DateTime.now().toString());
                                     
                                     ApiService.signUp(userPeri).then((value) {
                                       if (value == 200) {

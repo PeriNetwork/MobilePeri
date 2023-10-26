@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
+import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
-import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
 import 'package:peri_mobile_flutter/search_bar.dart';
-
-import 'create_post.dart';
 
 class HomePagePeri extends StatefulWidget {
   const HomePagePeri({super.key});
@@ -15,38 +14,133 @@ class HomePagePeri extends StatefulWidget {
 }
 
 class _HomePagePeriState extends State<HomePagePeri> {
+  PeriPostRepository _periPostRepository = PeriPostRepository();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Align(
-          alignment: Alignment(1, 1),
-          child: Scaffold(
-            appBar: PreferredSize(
-                child: PeriNavBar(), preferredSize: const Size.fromHeight(50)),
-            body: Stack( 
-              children: [
-                Align(
-                  alignment: Alignment(0, -1),
-                  child: SingleChildScrollView(
-                      child: Column(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      SearchBarPeri(),
-                      PostWidget(),
-                      PostWidget(),
-                      PostWidget(),
-                      PostWidget(),
-                      PostWidget(),
-                      PostWidget(),
-                    ],
-                  )),
-                ),
-                CreatePost(),
-              ],
-            ),
-            backgroundColor: Color.fromARGB(255, 10, 10, 10),
+    return Scaffold(
+      appBar: PreferredSize(
+          child: PeriNavBar(), preferredSize: Size.fromHeight(50)),
+      backgroundColor: Colors.black,
+      body: Column(
+        children: [
+          SizedBox(
+            height: 15,
           ),
-        )
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SearchBarPeri(),
+              FloatingActionButton(
+                shape: CircleBorder(),
+                focusColor: Colors.grey,
+                backgroundColor: Colors.white,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/writePost');
+                },
+                child: Icon(
+                  Icons.draw,
+                  color: Colors.red,
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+              child: ListView.separated(
+                  itemBuilder: (BuildContext context, index) => Card(
+                        color: Colors.grey[850],
+                        // Set the shape of the card using a rounded rectangle border with a 8 pixel radius
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        // Set the clip behavior of the card
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        // Define the child widgets of the card
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            // Display an image at the top of the card that fills the width of the card and has a height of 160 pixels
+                            Image.asset(
+                              'assets/images/post_media_2.png',
+                              height: 160,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),
+                            // Add a container with padding that contains the card's title, text, and buttons
+                            Container(
+                              color: Colors.grey[850],
+                              padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  // Display the card's title using a font size of 24 and a dark grey color
+                                  Text(
+                                    _periPostRepository
+                                        .getPostList()[index]
+                                        .title,
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  // Add a space between the title and the text
+                                  Container(height: 10),
+                                  // Display the card's text using a font size of 15 and a light grey color
+                                  Text(
+                                    _periPostRepository
+                                        .getPostList()[index]
+                                        .description,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Spacer(),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 10, bottom: 10),
+                                        child: LikeButton(),
+                                      ),
+                                      Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 10, right: 10),
+                                          child: GestureDetector(
+                                            child: Icon(
+                                              Icons.comment,
+                                              color: Colors.grey,
+                                              size: 30,
+                                            ),
+                                            onTap: () {
+                                              
+                                            },
+                                          ))
+                                    ],
+                                  ),
+
+                                  // Add a row with two buttons spaced apart and aligned to the right side of the card
+                                ],
+                              ),
+                            ),
+                            // Add a small space between the card and the next widget
+                            Container(height: 5),
+                          ],
+                        ),
+                      ),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      Divider(
+                        color: Colors.black,
+                      ),
+                  itemCount: _periPostRepository.getPostList().length)),
+        ],
+      ),
     );
   }
 }

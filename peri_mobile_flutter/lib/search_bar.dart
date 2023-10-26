@@ -39,3 +39,27 @@ class SearchBarPeri extends StatelessWidget {
     );
   }
 }
+
+
+/*
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SearchBarPeri(),
+              FloatingActionButton(
+                shape: CircleBorder(),
+                focusColor: Colors.grey,
+                backgroundColor: Colors.white,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/writePost');
+                },
+                child: Icon(
+                  Icons.draw,
+                  color: Colors.red,
+                ),
+              )
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),*/

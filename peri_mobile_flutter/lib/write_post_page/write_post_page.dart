@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 
@@ -112,12 +114,7 @@ class _WritePostPageState extends State<WritePostPage> {
                                         Text('Preencha os campos obrigatórios')),
                               );
                             } else {
-                              String title = _titleController.text;
-                              String description =
-                                  _descriptionController.text;
                               
-                              
-
                             }
                           },
                           child: Icon(

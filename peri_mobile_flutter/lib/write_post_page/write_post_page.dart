@@ -1,6 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:peri_mobile_flutter/api/model/peri_post.dart';
+import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
+import 'package:peri_mobile_flutter/home_page.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 
 class WritePostPage extends StatefulWidget {
@@ -110,11 +115,24 @@ class _WritePostPageState extends State<WritePostPage> {
                                 _descriptionController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content:
-                                        Text('Preencha os campos obrigatórios')),
+                                    content: Text(
+                                        'Preencha os campos obrigatórios')),
                               );
                             } else {
-                              
+                              Post post = Post(
+                                  title: _titleController.text,
+                                  description: _descriptionController.text,
+                                  active: 1,
+                                  author: "Administrador",
+                                  createdAt: DateTime.now(),
+                                  id: Random().nextInt(1000),
+                                  idPeriUser: 1,
+                                  numLikes: 0);
+
+                              PeriPostRepository.addPost(post);
+                              PeriPostRepository.printPostList();
+                              // navigate to home page
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePagePeri()));
                             }
                           },
                           child: Icon(

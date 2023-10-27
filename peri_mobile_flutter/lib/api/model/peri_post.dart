@@ -5,6 +5,8 @@ class Post {
     final DateTime createdAt;
     final int active;
     final int idPeriUser;
+    final String author;
+    int numLikes;
 
     Post({
         required this.id,
@@ -13,5 +15,7 @@ class Post {
         required this.createdAt,
         required this.active,
         required this.idPeriUser,
+        required this.author,
+        required this.numLikes,
     });
 }

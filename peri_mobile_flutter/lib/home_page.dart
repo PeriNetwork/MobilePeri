@@ -14,7 +14,7 @@ class HomePagePeri extends StatefulWidget {
 }
 
 class _HomePagePeriState extends State<HomePagePeri> {
-  PeriPostRepository _periPostRepository = PeriPostRepository();
+  final PeriPostRepository _periPostRepository = PeriPostRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
                 backgroundColor: Colors.white,
                 onPressed: () {
                   Navigator.pushNamed(context, '/writePost');
+                  initState();
                 },
                 child: Icon(
                   Icons.draw,
@@ -50,7 +51,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
           ),
           Expanded(
               child: ListView.separated(
-                  itemBuilder: (BuildContext context, index) => Card(
+                  itemBuilder: (BuildContext context, int index) => Card(
                         color: Colors.grey[850],
                         // Set the shape of the card using a rounded rectangle border with a 8 pixel radius
                         shape: RoundedRectangleBorder(
@@ -62,6 +63,34 @@ class _HomePagePeriState extends State<HomePagePeri> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            Container(
+                              color: Colors.grey[850],
+                              padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: AssetImage(
+                                        'assets/images/profile_pic.png'),
+                                    radius: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    _periPostRepository
+                                        .getPostList()[index]
+                                        .author,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
                             // Display an image at the top of the card that fills the width of the card and has a height of 160 pixels
                             Image.asset(
                               'assets/images/post_media_2.png',
@@ -105,9 +134,36 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                     children: [
                                       const Spacer(),
                                       Padding(
+                                        padding: EdgeInsets.all(10),
+                                        child: Text(
+                                          _periPostRepository
+                                              .getPostList()[index]
+                                              .numLikes
+                                              .toString(),
+                                          style: TextStyle(
+                                              color: Colors.grey, fontSize: 25),
+                                        ),
+                                      ),
+                                      Padding(
                                         padding: EdgeInsets.only(
                                             top: 10, bottom: 10),
-                                        child: LikeButton(),
+                                        child: LikeButton(
+                                          onTap: (isLiked) {
+                                            if (isLiked) {
+                                              _periPostRepository
+                                                  .getPostList()[index]
+                                                  .numLikes--;
+                                            } else {
+                                              _periPostRepository
+                                                  .getPostList()[index]
+                                                  .numLikes++;
+                                            }
+                                            return Future.value(!isLiked);
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
                                       ),
                                       Padding(
                                           padding: EdgeInsets.only(
@@ -118,9 +174,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                               color: Colors.grey,
                                               size: 30,
                                             ),
-                                            onTap: () {
-                                              
-                                            },
+                                            onTap: () {},
                                           ))
                                     ],
                                   ),

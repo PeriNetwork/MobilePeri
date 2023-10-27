@@ -3,41 +3,55 @@ import 'dart:math';
 import 'package:peri_mobile_flutter/api/model/peri_post.dart';
 
 class PeriPostRepository {
-  List<Post> postList = [];
+  static List<Post> postList = [];
 
-  // create 3 fake posts and add to postlist
+  // generate 3 fake posts and add them to the list
   PeriPostRepository() {
     postList.add(Post(
-        id: Random.secure().nextInt(1000),
-        title: "Post 1",
-        description: "Description 1",
+        id: 1,
+        title: "Exposição de arte",
+        description: "Shopping center limeira...",
         createdAt: DateTime.now(),
         active: 1,
-        idPeriUser: 1));
+        idPeriUser: 1,
+        author: "Maria",
+        numLikes: 23));
+
     postList.add(Post(
-        id: Random.secure().nextInt(1000),
-        title: "Post 2",
-        description: "Description 2",
+        id: 2,
+        title: "Batalha de rima",
+        description: "Em frente ao museu da cidade...",
         createdAt: DateTime.now(),
         active: 1,
-        idPeriUser: 1));
+        idPeriUser: 2,
+        author: "Joao",
+        numLikes: 33));
+
     postList.add(Post(
-        id: Random.secure().nextInt(1000),
-        title: "Post 3",
-        description: "Description 3",
+        id: 3,
+        title: "Mural de Graffiti",
+        description: "Mural localizado no centro de limeira...",
         createdAt: DateTime.now(),
         active: 1,
-        idPeriUser: 1));
+        idPeriUser: 3,
+        author: "Ana Julia",
+        numLikes: 12));
   }
 
   //add post to list
-  void addPost(Post post) {
+  static void addPost(Post post) {
     postList.add(post);
   }
 
   //get post list
   List<Post> getPostList() {
     return postList;
+  }
+
+  static void printPostList() {
+    postList.forEach((element) {
+      print(element.title);
+    });
   }
 
   //get post by id

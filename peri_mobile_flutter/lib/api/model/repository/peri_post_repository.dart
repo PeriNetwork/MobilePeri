@@ -15,7 +15,10 @@ class PeriPostRepository {
         active: 1,
         idPeriUser: 1,
         author: "Maria",
-        numLikes: 23));
+        numLikes: 23,
+        liked: true,
+        comments: ["Comentário 1", "Comentário 2"]
+        ));
 
     postList.add(Post(
         id: 2,
@@ -25,7 +28,9 @@ class PeriPostRepository {
         active: 1,
         idPeriUser: 2,
         author: "Joao",
-        numLikes: 33));
+        numLikes: 33,
+        liked: true,
+        comments: []));
 
     postList.add(Post(
         id: 3,
@@ -35,7 +40,9 @@ class PeriPostRepository {
         active: 1,
         idPeriUser: 3,
         author: "Ana Julia",
-        numLikes: 12));
+        numLikes: 12,
+        liked: true,
+        comments: []));
   }
 
   //add post to list

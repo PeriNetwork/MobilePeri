@@ -23,10 +23,7 @@ class UserProfile extends StatelessWidget {
               followersNumber: 3,
               followingNumber: 5,
             ),
-            PostWidget(),
-            PostWidget(),
-            PostWidget(),
-            PostWidget(),
+            
           ],
         ),
       ),

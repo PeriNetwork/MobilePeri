@@ -148,6 +148,15 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                         padding: EdgeInsets.only(
                                             top: 10, bottom: 10),
                                         child: LikeButton(
+                                          //isLiked: _periPostRepository.getPostList()[index].liked,
+                                          size: 30,
+                                          circleColor: CircleColor(
+                                              start: Colors.red,
+                                              end: Colors.red),
+                                          bubblesColor: BubblesColor(
+                                            dotPrimaryColor: Colors.red,
+                                            dotSecondaryColor: Colors.red,
+                                          ),
                                           onTap: (isLiked) {
                                             if (isLiked) {
                                               _periPostRepository
@@ -158,8 +167,14 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                                   .getPostList()[index]
                                                   .numLikes++;
                                             }
+                                            setState(() {
+                                              _periPostRepository
+                                                  .getPostList()[index]
+                                                  .liked = !isLiked;
+                                            });
                                             return Future.value(!isLiked);
                                           },
+                                          
                                         ),
                                       ),
                                       SizedBox(
@@ -174,7 +189,47 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                               color: Colors.grey,
                                               size: 30,
                                             ),
-                                            onTap: () {},
+                                            onTap: () {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return Dialog(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20)),
+                                                      elevation: 16,
+                                                      child: Container(
+                                                        color: Colors.grey[850],
+                                                        child: ListView.builder(
+                                                            itemCount:
+                                                                _periPostRepository
+                                                                    .getPostList()[
+                                                                        index]
+                                                                    .comments
+                                                                    .length,
+                                                            itemBuilder:
+                                                                (BuildContext
+                                                                        context,
+                                                                    int index) {
+                                                              return ListTile(
+                                                                title: Text(
+                                                                  _periPostRepository
+                                                                      .getPostList()[
+                                                                          index]
+                                                                      .comments[index],
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                              );
+                                                            }),
+                                                      ),
+                                                    );
+                                                  });
+                                            },
                                           ))
                                     ],
                                   ),

@@ -7,6 +7,8 @@ class Post {
     final int idPeriUser;
     final String author;
     int numLikes;
+    List<String> comments;
+    bool liked;
 
     Post({
         required this.id,
@@ -17,5 +19,7 @@ class Post {
         required this.idPeriUser,
         required this.author,
         required this.numLikes,
+        required this.comments,
+        required this.liked,
     });
 }

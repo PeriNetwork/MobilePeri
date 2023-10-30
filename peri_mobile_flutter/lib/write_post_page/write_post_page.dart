@@ -133,7 +133,9 @@ class _WritePostPageState extends State<WritePostPage> {
                                   createdAt: DateTime.now(),
                                   id: Random().nextInt(1000),
                                   idPeriUser: 1,
-                                  numLikes: 0);
+                                  numLikes: 0,
+                                  liked: true,
+                                  comments: ["Amei !!"]);
 
                               PeriPostRepository.addPost(post);
                               PeriPostRepository.printPostList();

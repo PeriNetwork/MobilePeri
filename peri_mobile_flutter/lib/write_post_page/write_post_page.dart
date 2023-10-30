@@ -56,7 +56,11 @@ class _WritePostPageState extends State<WritePostPage> {
                               child: TextField(
                             controller: _titleController,
                             maxLines: 1,
-                            decoration: InputDecoration(hintText: "Título"),
+                            decoration: const InputDecoration(
+                              hintText: 'Título',
+                              hintStyle: TextStyle(color: Color.fromARGB(255, 209, 39, 39),fontSize: 18)
+                              
+                              ),
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           )),
                         ),
@@ -97,7 +101,9 @@ class _WritePostPageState extends State<WritePostPage> {
                   children: [
                     FloatingActionButton(
                         backgroundColor: Colors.red[400],
-                        onPressed: () {},
+                        onPressed: () {
+
+                        },
                         child: Icon(
                           Icons.add_a_photo,
                           color: Colors.white,

@@ -93,7 +93,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
                             ),
                             // Display an image at the top of the card that fills the width of the card and has a height of 160 pixels
                             Image.asset(
-                              'assets/images/post_media_2.png',
+                              'assets/images/post_media.png',
                               height: 160,
                               width: double.infinity,
                               fit: BoxFit.cover,

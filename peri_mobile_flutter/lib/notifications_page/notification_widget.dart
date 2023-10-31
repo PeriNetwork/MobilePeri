@@ -1,14 +1,23 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
+import 'package:peri_mobile_flutter/api/model/peri_notification.dart';
+import 'package:peri_mobile_flutter/api/model/repository/peri_notification_repository.dart';
 
-class NotificationWidget extends StatelessWidget {
+class NotificationWidget extends StatefulWidget {
   const NotificationWidget(
-      {super.key, required this.notificationType, required this.userName});
+      {super.key,
+      required this.notificationType,
+      required this.userName,
+      required this.notification});
 
   final IconData notificationType;
   final String userName;
+  final PeriNotification notification;
 
+  @override
+  State<NotificationWidget> createState() => _NotificationWidgetState();
+}
+
+class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +33,7 @@ class NotificationWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(10),
             child: Icon(
-              notificationType,
+              widget.notificationType,
               color: Colors.red,
               size: 35,
             ),
@@ -36,30 +45,50 @@ class NotificationWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  userName,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
+              Row(
+                children: [
+                  Text(
+                    widget.userName,
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: 20),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
-                notificationType == Icons.thumb_up
+                widget.notificationType == Icons.thumb_up
                     ? "Curtiu seu post"
                     : "Adicionou um comentário",
                 style:
                     TextStyle(fontWeight: FontWeight.w300, color: Colors.white),
               ),
             ],
+          ),
+          /*
+          Spacer(),
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    PeriNotificationRepository.deleteNotification(
+                        widget.notification);
+                  });
+                },
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 30,
+                )),
           )
+          */
         ],
       ),
     );
+    ;
   }
 }

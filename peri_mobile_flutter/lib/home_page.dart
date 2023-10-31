@@ -69,9 +69,18 @@ class _HomePagePeriState extends State<HomePagePeri> {
                               child: Row(
                                 children: [
                                   CircleAvatar(
-                                    backgroundImage: AssetImage(
-                                        'assets/images/profile_pic.png'),
-                                    radius: 20,
+                                    backgroundColor: Colors.red,
+                                    child: Text(
+                                      _periPostRepository
+                                          .getPostList()[index]
+                                          .author
+                                          .substring(0, 1),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontStyle: FontStyle.italic,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400),
+                                    ),
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -85,6 +94,25 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ),
+                                  Spacer(),
+                                  PopupMenuButton(
+                                    itemBuilder: (context) {
+                                      return [
+                                        PopupMenuItem(
+                                          child: Text("Excluir"),
+                                          value: 2,
+                                          onTap: () {
+                                            setState(() {
+                                              _periPostRepository.removePost(
+                                                  _periPostRepository
+                                                      .getPostList()[index]);
+                                            });
+                                          },
+                                        ),
+                                      ];
+                                    },
+                                    color: Colors.white,
+                                  )
                                 ],
                               ),
                             ),
@@ -174,7 +202,6 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                             });
                                             return Future.value(!isLiked);
                                           },
-                                          
                                         ),
                                       ),
                                       SizedBox(

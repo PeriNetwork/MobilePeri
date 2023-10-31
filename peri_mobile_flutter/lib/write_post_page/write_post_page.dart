@@ -19,6 +19,8 @@ class _WritePostPageState extends State<WritePostPage> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
 
+  PeriPostRepository postRepo = PeriPostRepository();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,7 +139,7 @@ class _WritePostPageState extends State<WritePostPage> {
                                   liked: true,
                                   comments: ["Amei !!"]);
 
-                              PeriPostRepository.addPost(post);
+                              postRepo.addPost(post);
                               PeriPostRepository.printPostList();
                               // navigate to home page
                               Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePagePeri()));

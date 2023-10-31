@@ -7,6 +7,7 @@ class PeriPostRepository {
 
   // generate 3 fake posts and add them to the list
   PeriPostRepository() {
+    /*
     postList.add(Post(
         id: 1,
         title: "Exposição de arte",
@@ -43,10 +44,11 @@ class PeriPostRepository {
         numLikes: 12,
         liked: true,
         comments: []));
+        */
   }
 
   //add post to list
-  static void addPost(Post post) {
+  void addPost(Post post) {
     postList.add(post);
   }
 

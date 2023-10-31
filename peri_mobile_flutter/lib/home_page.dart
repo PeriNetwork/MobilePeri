@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
+import 'package:peri_mobile_flutter/api/model/peri_post.dart';
 import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 import 'package:peri_mobile_flutter/search_bar.dart';
@@ -15,6 +16,22 @@ class HomePagePeri extends StatefulWidget {
 
 class _HomePagePeriState extends State<HomePagePeri> {
   final PeriPostRepository _periPostRepository = PeriPostRepository();
+  //controller
+  final TextEditingController _addCommentController = TextEditingController();
+
+  String postBusca = "";
+  List<Post> postListBusca = [];
+
+  void initState() {
+    postListBusca = _periPostRepository.getPostList();
+    super.initState();
+  }
+
+  void atualizaLista(String postBusca) {
+    setState(() {
+      postListBusca = postListBusca.where((Post post) => post.title == postBusca).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -241,16 +258,68 @@ class _HomePagePeriState extends State<HomePagePeri> {
                                                                 (BuildContext
                                                                         context,
                                                                     int index) {
-                                                              return ListTile(
-                                                                title: Text(
-                                                                  _periPostRepository
-                                                                      .getPostList()[
-                                                                          index]
-                                                                      .comments[index],
-                                                                  style: TextStyle(
+                                                              return Column(
+                                                                children: [
+                                                                  Padding(
+                                                                    padding:
+                                                                        EdgeInsets.all(
+                                                                            10),
+                                                                    child:
+                                                                        TextField(
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              Colors.white),
+                                                                      controller:
+                                                                          _addCommentController,
+                                                                      decoration: InputDecoration(
+                                                                          border:
+                                                                              OutlineInputBorder(),
+                                                                          hintText:
+                                                                              'Comentário',
+                                                                          hintStyle:
+                                                                              TextStyle(color: Colors.white),
+                                                                          fillColor: Colors.white),
+                                                                    ),
+                                                                  ),
+                                                                  TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        setState(
+                                                                            () {
+                                                                          _periPostRepository
+                                                                              .getPostList()[index]
+                                                                              .comments
+                                                                              .add(_addCommentController.text);
+                                                                          _addCommentController
+                                                                              .clear();
+                                                                        });
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'Enviar',
+                                                                        style: TextStyle(
+                                                                            color:
+                                                                                Colors.white),
+                                                                      )),
+                                                                  ListTile(
+                                                                    leading:
+                                                                        Icon(
+                                                                      Icons
+                                                                          .comment,
                                                                       color: Colors
-                                                                          .white),
-                                                                ),
+                                                                          .white,
+                                                                    ),
+                                                                    title: Text(
+                                                                      _periPostRepository
+                                                                          .getPostList()[
+                                                                              index]
+                                                                          .comments[index],
+                                                                      style: TextStyle(
+                                                                          color:
+                                                                              Colors.white),
+                                                                    ),
+                                                                  )
+                                                                ],
                                                               );
                                                             }),
                                                       ),

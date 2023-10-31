@@ -19,7 +19,7 @@ class UserProfile extends StatelessWidget {
         child: Column(
           children: [
             HeaderProfile(
-              userName: "Ana Júlia Sentinella",
+              userName: "Administrador",
               followersNumber: 3,
               followingNumber: 5,
             ),

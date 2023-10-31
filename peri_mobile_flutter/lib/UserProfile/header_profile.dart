@@ -21,10 +21,13 @@ class HeaderProfile extends StatelessWidget {
           padding: EdgeInsets.only(top: 30, bottom: 30),
           child: Align(
             alignment: Alignment.topCenter,
-            child: Image(
-              image: AssetImage('assets/images/user_avatar.png'),
-              width: 200,
-            ),
+            child: CircleAvatar(
+              radius: 50,
+              child: Text(
+                "A",
+                style: TextStyle(fontSize: 50),
+              )
+            )
           ),
         ),
         Text(

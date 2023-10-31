@@ -1,15 +1,20 @@
-// ignore_for_file: sort_child_properties_last, unnecessary_import, implementation_imports, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:peri_mobile_flutter/UserProfile/header_profile.dart';
 import 'package:peri_mobile_flutter/UserProfile/peri_nav_bar_user_page.dart';
-import 'package:peri_mobile_flutter/peri_nav_bar.dart';
-import 'package:peri_mobile_flutter/postWidget/post_widget.dart';
+import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
 
-class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+class UserProfile extends StatefulWidget {
+  const UserProfile({super.key, required this.periPostRepository});
 
+  final PeriPostRepository periPostRepository;
+
+  @override
+  State<UserProfile> createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +33,6 @@ class UserProfile extends StatelessWidget {
         ),
       ),
       backgroundColor: Colors.black,
-    );
+    );;
   }
 }

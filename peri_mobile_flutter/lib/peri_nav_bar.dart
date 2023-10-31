@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:peri_mobile_flutter/UserProfile/user_profile.dart';
+import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
 import 'package:peri_mobile_flutter/home_page.dart';
 import 'package:peri_mobile_flutter/notifications_page/notifications_page.dart';
 
@@ -10,6 +11,7 @@ class PeriNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listUserPosts = PeriPostRepository();
     return AppBar(
       centerTitle: true,
       leading: GestureDetector(
@@ -46,7 +48,7 @@ class PeriNavBar extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const UserProfile();
+              return UserProfile(periPostRepository: listUserPosts);
             }));
           },
           child: Image(

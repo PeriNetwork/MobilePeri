@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => SignInPeri(),
         '/homepage': (context) => HomePagePeri(),
         '/notifications': (context) => NotificationsPage(),
-        '/myprofile': (context) => UserProfile(),
+        //'/myprofile': (context) => UserProfile(periPostRepository: ),
         '/writePost': (context) => WritePostPage(),
         '/createAccount': (context) => CreateAccountPage(),
         '/login': (context) => LoginPage(),

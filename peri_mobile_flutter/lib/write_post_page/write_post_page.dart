@@ -137,7 +137,7 @@ class _WritePostPageState extends State<WritePostPage> {
                                   idPeriUser: 1,
                                   numLikes: 0,
                                   liked: true,
-                                  comments: ["Amei !!"]);
+                                  comments: ["Amei !!"],);
 
                               postRepo.addPost(post);
                               PeriPostRepository.printPostList();

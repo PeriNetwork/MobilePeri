@@ -63,7 +63,7 @@ class PeriNavBarUserPage extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return UserProfile(periPostRepository: userPostList,);
+              return UserProfile();
             }));
           },
           child: Image(

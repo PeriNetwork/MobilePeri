@@ -2,9 +2,14 @@
 
 import 'package:flutter/material.dart';
 
-class SearchBarPeri extends StatelessWidget {
+class SearchBarPeri extends StatefulWidget {
   const SearchBarPeri({super.key});
 
+  @override
+  State<SearchBarPeri> createState() => _SearchBarPeriState();
+}
+
+class _SearchBarPeriState extends State<SearchBarPeri> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,6 +32,8 @@ class SearchBarPeri extends StatelessWidget {
           ),
           Expanded(
             child: TextField(
+              onChanged: (value) {
+              },
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
                   border: InputBorder.none,
@@ -39,27 +46,3 @@ class SearchBarPeri extends StatelessWidget {
     );
   }
 }
-
-
-/*
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SearchBarPeri(),
-              FloatingActionButton(
-                shape: CircleBorder(),
-                focusColor: Colors.grey,
-                backgroundColor: Colors.white,
-                onPressed: () {
-                  Navigator.pushNamed(context, '/writePost');
-                },
-                child: Icon(
-                  Icons.draw,
-                  color: Colors.red,
-                ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),*/

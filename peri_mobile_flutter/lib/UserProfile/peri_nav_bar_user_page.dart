@@ -20,7 +20,7 @@ class PeriNavBarUserPage extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const HomePagePeri()),
+            MaterialPageRoute(builder: (context) => const PeriNavBarUserPage()),
           );
         },
         child: Image(image: AssetImage('assets/images/peri_logo_nav.png')),

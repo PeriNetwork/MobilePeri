@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 import 'package:peri_mobile_flutter/sign_in/sign_in.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class configUserPage extends StatefulWidget {
   const configUserPage({super.key});
@@ -47,80 +48,26 @@ class UserSettingsPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 10),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                children: [
-                  Icon(
-                    FontAwesomeIcons.user,
-                    color: Colors.red[600],
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Sua Conta",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              title: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    "Alterar Senha",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w100,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Row(
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    "Alterar Nome",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w100,
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
-              onTap: () {},
-            ),
             SizedBox(height: 10),
             ListTile(
-              leading: Icon(
-                FontAwesomeIcons.questionCircle,
-                color: Colors.red[600],
-              ),
-              title: Text(
-                "Ajuda",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w100,
-                  fontSize: 20,
+                leading: Icon(
+                  FontAwesomeIcons.questionCircle,
+                  color: Colors.red[600],
                 ),
-              ),
-              onTap: () {},
-            ),
+                title: Text(
+                  "Ajuda",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w100,
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () async {
+                  final Uri url = Uri.parse("https://github.com/PeriNetwork/MobilePeri");
+                  if (!await launchUrl(url)) {
+                    throw 'Could not launch $url';
+                  }
+                }),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(

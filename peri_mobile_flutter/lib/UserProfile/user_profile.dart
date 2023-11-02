@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import 'package:peri_mobile_flutter/UserProfile/header_profile.dart';
+import 'package:peri_mobile_flutter/UserProfile/peri_nav_bar_user_page.dart';
 import 'package:peri_mobile_flutter/api/model/peri_post.dart';
 import 'package:peri_mobile_flutter/api/model/repository/peri_post_repository.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
@@ -24,7 +25,7 @@ class _UserProfileState extends State<UserProfile> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: PreferredSize(
-          child: PeriNavBar(), preferredSize: Size.fromHeight(50)),
+          child: PeriNavBarUserPage(), preferredSize: Size.fromHeight(50)),
       body: Column(
         children: [
           SizedBox(

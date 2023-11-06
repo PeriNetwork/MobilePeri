@@ -61,7 +61,25 @@ class UserSettingsPage extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                onTap: () async {}),
+                onTap: () {
+                  // show dialog box
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("Ajuda"),
+                          content: Text(
+                              "A Rede Peri é uma plataforma digital que permite o compartilhamento de mídias artísticas periféricas. A rede oferece um espaço para os artistas exporem e compartilharem seus trabalhos e para os espectadores descobrirem formas de arte inovadoras. \n\nPara mais informações acesse: \ngithub.com/PeriNetwork"),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("Fechar"))
+                          ],
+                        );
+                      });
+                }),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(

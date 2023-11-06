@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:peri_mobile_flutter/peri_nav_bar.dart';
 import 'package:peri_mobile_flutter/sign_in/sign_in.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class configUserPage extends StatefulWidget {
   const configUserPage({super.key});
@@ -62,12 +61,7 @@ class UserSettingsPage extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                onTap: () async {
-                  final Uri url = Uri.parse("https://github.com/PeriNetwork/MobilePeri");
-                  if (!await launchUrl(url)) {
-                    throw 'Could not launch $url';
-                  }
-                }),
+                onTap: () async {}),
             SizedBox(height: 10),
             ListTile(
               leading: Icon(

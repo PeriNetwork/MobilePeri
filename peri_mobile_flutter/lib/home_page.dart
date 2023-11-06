@@ -32,7 +32,7 @@ class _HomePagePeriState extends State<HomePagePeri> {
 
     setState(() {
       postListBusca = postListBusca
-          .where((Post post) => postBusca.startsWith(post.title))
+          .where((Post post) => postBusca.contains(post.title))
           .toList();
     });
   }
